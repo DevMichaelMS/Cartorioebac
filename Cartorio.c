@@ -404,129 +404,150 @@ int main(){
     int opcao, cont = 1;
     char nome[100];
     setlocale(LC_ALL, "Portuguese");
+    char senhad[10];
+    int comp;
     
-    // Boas vindas
+    //Solicitando senha de Administrador
     printf("Seja bem-vindo ao Cartório de Alunos e Professores da EBAC!\n\n");
+    printf("Login de Administrador! \n\nDigite a sua senha: ");
+    scanf("%s", senhad);
+    system("cls");
+    
+    // limpar o buffer de entrada
+    while (getchar() != '\n');
+    
+    //Verificar se a senha fornecida é correta
+    comp = strcmp(senhad, "admin");
+    
+    // Boas vindas e solicitar nome de usuário para melhor interação
     printf("Para começar, por favor, diga o seu nome: ");
     fgets(nome, sizeof(nome), stdin);
     nome[strcspn(nome, "\n")] = '\0';
     system("cls");
-    printf("Olá %s, espero que esteja tendo um ótimo dia!\n\n", nome);
-    system("pause");
     
-    // Menu principal
-    while (cont) {
-    	system("cls");
-        printf("###-- Cartório EBAC --###\n\n");
-        printf("%s, escolha uma das opções do menu abaixo:\n\n", nome);
-        printf("\t1 - Realizar Cadastro\n");
-        printf("\t2 - Realizar Consulta\n");
-        printf("\t3 - Excluir do Cartório\n");
-        printf("\t0 - Sair\n\n");
-        printf("Digite a opção desejada: ");
-        scanf("%d", &opcao);
-        system("cls");
+    //veerificar se a senha esta correta
+    if(comp == 0)
+	{
+   		 // Boas vindas
+    	printf("Olá %s, espero que esteja tendo um ótimo dia!\n\n", nome);
+    	system("pause");
+    	
+    	// Menu principal
+    	while (cont) {
+    		system("cls");
+        	printf("###-- Cartório EBAC --###\n\n");
+        	printf("%s, escolha uma das opções do menu abaixo:\n\n", nome);
+        	printf("\t1 - Realizar Cadastro\n");
+        	printf("\t2 - Realizar Consulta\n");
+        	printf("\t3 - Excluir do Cartório\n");
+        	printf("\t0 - Sair\n\n");
+        	printf("Digite a opção desejada: ");
+        	scanf("%d", &opcao);
+        	system("cls");
         
-        switch (opcao) {
-            case 1:
-                // Submenu de cadastro
-                printf("###-- Menu de Cadastro --###\n\n");
-                printf("%s, escolha o tipo de cadastro:\n\n", nome);
-                printf("\t1 - Cadastrar Aluno\n");
-                printf("\t2 - Cadastrar Professor\n");
-                printf("\t0 - Voltar ao Menu Principal\n\n");
-                printf("Digite a opção desejada: ");
-                scanf("%d", &opcao);
-                system("cls");
+        	switch (opcao) {
+            	case 1:
+                	// Submenu de cadastro
+                	printf("###-- Menu de Cadastro --###\n\n");
+                	printf("%s, escolha o tipo de cadastro:\n\n", nome);
+                	printf("\t1 - Cadastrar Aluno\n");
+                	printf("\t2 - Cadastrar Professor\n");
+                	printf("\t0 - Voltar ao Menu Principal\n\n");
+                	printf("Digite a opção desejada: ");
+                	scanf("%d", &opcao);
+                	system("cls");
                 
-                switch (opcao) {
-                    case 1:
-                        reg_aluno();
-                        break;
-                    case 2:
-                        reg_professor();
-                        break;
-                    case 0:
-                        break;
-                    default:
-                        printf("Opção inválida! Por favor, digite uma opção válida.\n");
-                        system("pause");
-                        system("cls");
-                        break;
-                }
-                break;
+                	switch (opcao) {
+                    	case 1:
+                       		reg_aluno();
+                        	break;
+                    	case 2:
+                        	reg_professor();
+                        	break;
+                    	case 0:
+                        	break;
+                    	default:
+                        	printf("Opção inválida! Por favor, digite uma opção válida.\n");
+                        	system("pause");
+                        	system("cls");
+                        	break;
+                	}
+                	break;
             
-            case 2:
-                // Submenu de consulta
-                printf("###-- Menu de Consulta --###\n\n");
-                printf("%s , escolha o tipo de consulta:\n\n", nome);
-                printf("\t1 - Consultar Aluno\n");
-                printf("\t2 - Consultar Professor\n");
-                printf("\t0 - Voltar ao Menu Principal\n\n");
-                printf("Digite a opção desejada: ");
-                scanf("%d", &opcao);
-                system("cls");
+            	case 2:
+                	// Submenu de consulta
+                	printf("###-- Menu de Consulta --###\n\n");
+                	printf("%s , escolha o tipo de consulta:\n\n", nome);
+                	printf("\t1 - Consultar Aluno\n");
+                	printf("\t2 - Consultar Professor\n");
+                	printf("\t0 - Voltar ao Menu Principal\n\n");
+                	printf("Digite a opção desejada: ");
+                	scanf("%d", &opcao);
+                	system("cls");
                 
-                switch (opcao) {
-                    case 1:
-                        con_aluno();
-                        break;
-                    case 2:
-                        con_professor();
-                        break;
-                    case 0:
-                        break;
-                    default:
-                        printf("Opção inválida! Por favor, digite uma opção válida.\n");
-                        system("pause");
-                        system("cls");
-                        break;
-                }
-                break;
+                	switch (opcao) {
+                    	case 1:
+                        	con_aluno();
+                        	break;
+                    	case 2:
+                        	con_professor();
+                        	break;
+                    	case 0:
+                        	break;
+                    	default:
+                        	printf("Opção inválida! Por favor, digite uma opção válida.\n");
+                        	system("pause");
+                        	system("cls");
+                        	break;
+                	}
+                	break;
             
-            case 3:
-                // Submenu de exclusão
-                printf("###-- Menu de Exclusão --###\n\n");
-                printf("%s , escolha o tipo de cadastro a ser excluído:\n\n", nome);
-                printf("\t1 - Excluir Cadastro de Aluno\n");
-                printf("\t2 - Excluir Cadastro de Professor\n");
-                printf("\t0 - Voltar ao Menu Principal\n\n");
-                printf("Digite a opção desejada: ");
-                scanf("%d", &opcao);
-                system("cls");
+            	case 3:
+                	// Submenu de exclusão
+                	printf("###-- Menu de Exclusão --###\n\n");
+                	printf("%s , escolha o tipo de cadastro a ser excluído:\n\n", nome);
+                	printf("\t1 - Excluir Cadastro de Aluno\n");
+                	printf("\t2 - Excluir Cadastro de Professor\n");
+                	printf("\t0 - Voltar ao Menu Principal\n\n");
+                	printf("Digite a opção desejada: ");
+                	scanf("%d", &opcao);
+                	system("cls");
 
-				// chamada de funções
-                switch (opcao) {
-                    case 1:
-                        del_aluno();
-                        break;
-                    case 2:
-                        del_professor();
-                        break;
-                    case 0:
-                        break;
-                    default:
-                        //printf("Opção inválida! Por favor, digite uma opção válida.\n");
-                        system("pause");
-                        system("cls");
-                        break;
-                }
-                break;
+					// chamada de funções
+                	switch (opcao) {
+                    	case 1:
+                        	del_aluno();
+                        	break;
+                    	case 2:
+                        	del_professor();
+                        	break;
+                    	case 0:
+                        	break;
+                    	default:
+                        	//printf("Opção inválida! Por favor, digite uma opção válida.\n");
+                        	system("pause");
+                        	system("cls");
+                        	break;
+                	}
+                	break;
             
-            // ao finalizar o programa, uma mensagem de adeus
-            case 0:
-                cont = 0;
-                printf("%s , obrigado por utilizar nosso sistema! Até mais!\n", nome);
-                break;
+            	// ao finalizar o programa, uma mensagem de adeus
+            	case 0:
+                	cont = 0;
+                	printf("%s , obrigado por utilizar nosso sistema! Até mais!\n", nome);
+                	break;
             
-            // caso digitar opções inválidas.
-            default:
-                printf("Opção inválida! Por favor, digite uma opção válida.\n");
-                system("pause");
-                system("cls");
-                break;
-        }
-    }
+            	// caso digitar opções inválidas.
+            	default:
+                	printf("Opção inválida! Por favor, digite uma opção válida.\n");
+                	system("pause");
+                	system("cls");
+                	break;
+        	}
+    	}
+	}else{
+		printf("Senha incorreta!");
+	}
     // encerramento de programa
     return 0;
 }
