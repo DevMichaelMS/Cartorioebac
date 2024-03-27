@@ -40,6 +40,7 @@ void reg_aluno() {
     
     do {
     	setlocale(LC_ALL, "Portuguese");
+    	setlocale(LC_ALL, "Portuguese_Brasil.1252");
     	
         // Captura das informações do aluno
         printf("###-- Cadastro de Aluno --###\n\n");
@@ -404,6 +405,7 @@ int main(){
     int opcao, cont = 1;
     char nome[100];
     setlocale(LC_ALL, "Portuguese");
+    setlocale(LC_ALL, "Portuguese_Brasil.1252");
     char senhad[10];
     int comp;
     
